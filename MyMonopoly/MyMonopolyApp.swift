@@ -12,6 +12,7 @@ struct MyMonopolyApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                
         }
     }
 }
