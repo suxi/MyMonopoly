@@ -55,7 +55,7 @@ let Funds = [
 
 
 struct ContentView: View {
-    @State private var players : [Int] = [20580,10000,0,0,0] // 0:banker, >1: player
+    @State private var players : [Int] = [20580,0,0,0,0] // 0:banker, >1: player
     @State private var num = 4
     @State private var trans = 0
     @State private var deposit = 0 //存钱
@@ -116,7 +116,6 @@ struct ContentView: View {
     
     var body: some View {
         VStack() {
-            VStack {
                 VStack {
                         if (num > 1){
                             
@@ -169,7 +168,8 @@ struct ContentView: View {
                             }
                             .frame(height: 40.0).foregroundColor(.green).font(.largeTitle)
                         }
-                    Spacer()
+                    Spacer().frame(minWidth: 0, idealWidth: 100, maxWidth: .infinity, minHeight: 0, idealHeight: 20, maxHeight: 20, alignment: .center)
+                    
                     HStack(alignment: .center) {
                         Button(action: {
                             withdrawal = next(withdrawal)
@@ -210,12 +210,11 @@ struct ContentView: View {
                         }).frame(width: 60.0).font(.largeTitle)
                        
                     }
-                }.padding().background(Color(red: 161/255, green: 153/255, blue: 138/255))
-            }
-            .padding(.all, 24.0)
-
+                }.padding(.horizontal).background(Color(red: 180/255, green: 205/255, blue: 200/255))
+            
             
             VStack {
+                Spacer()
                 HStack(alignment: .center) {
                     Button(action: {
                         if deposit != 0 || withdrawal != 0 {
@@ -255,7 +254,7 @@ struct ContentView: View {
                         reset = true
                     }))
                 }
-                .padding(.all, 3.0)
+                Spacer()
                 
                 HStack() {
                     Button(action: {if trans > 2058 || setNum {return};trans = trans * 10 + 7}, label: {
@@ -271,7 +270,8 @@ struct ContentView: View {
                         Text("9").font(.largeTitle).fontWeight(.black).frame(width: 80, height: 80, alignment: .center)
                     }).background(Color.gray)
                 }
-                .padding(.all, 3.0)
+                Spacer()
+                
                 HStack() {
                     Button(action: {
                         if setNum {
@@ -300,7 +300,8 @@ struct ContentView: View {
                         Text("6").font(.largeTitle).fontWeight(.black).frame(width: 80, height: 80, alignment: .center)
                     }).background(Color.gray)
                 }
-                .padding(.all, 3.0)
+                Spacer()
+                
                 HStack() {
                     Button(action: {
                         if trans > 2058 || setNum {
@@ -341,7 +342,8 @@ struct ContentView: View {
                         Text("3").font(.largeTitle).fontWeight(.black).frame(width: 80, height: 80, alignment: .center)
                     }).background(Color.gray)
                 }
-                .padding(.all, 3.0)
+                Spacer()
+                
                 HStack() {
                     Button(action: {}, label: {
                         Text("❓").font(.largeTitle).fontWeight(.black).frame(width: 80, height: 80, alignment: .center)
@@ -377,10 +379,10 @@ struct ContentView: View {
                         showFund = true
                     }))
                 }
-                .padding(.all, 3.0)
+                
             }
-            .padding()
-        }.preferredColorScheme(.dark)
+            
+        }.preferredColorScheme(.dark).padding(/*@START_MENU_TOKEN@*/.horizontal/*@END_MENU_TOKEN@*/)
     }
 }
 
